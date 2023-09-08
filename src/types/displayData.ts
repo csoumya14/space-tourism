@@ -3,7 +3,7 @@ interface ImageType {
   webp: string;
 }
 
-interface DestinationType {
+export interface DestinationType {
   name: string;
   images: ImageType;
   description: string;

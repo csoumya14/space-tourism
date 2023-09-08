@@ -1,3 +1,6 @@
+"use client";
+import { Section } from "./destination/destinationPage.style";
+
 interface DestinationLayoutProps {
   children: React.ReactNode;
 }
@@ -5,5 +8,5 @@ interface DestinationLayoutProps {
 export default function DestinationLayout({
   children,
 }: DestinationLayoutProps) {
-  return <div style={{ border: "10px solid blue" }}>{children}</div>;
+  return <Section>{children}</Section>;
 }
