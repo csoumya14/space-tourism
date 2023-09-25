@@ -1,53 +1,63 @@
 "use client";
-import React, { FC, useCallback, useState } from "react";
-import { TabHead, TabContainer, TabBody, Tab } from "./DestinationTabs.style";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import React, { FC } from "react";
+import {
+  StyledTab,
+  StyledTabs,
+  StyledTabList,
+  StyledTitle,
+  StyledDescription,
+  StyledTabPanel,
+  StyledTabImage,
+} from "./DestinationTabs.style";
+import { DestinationType } from "@/types/displayData";
+import { DescriptionList } from "../DescriptionList/DescriptionList";
 
-interface DestinationTabsProps {}
+interface DestinationTabsProps {
+  destinationData: DestinationType[];
+}
 
-const DestinatonTabs: FC<DestinationTabsProps> = () => {
-  const searchParams = useSearchParams()!;
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
-      return params.toString();
-    },
-    [searchParams]
-  );
+const DestinatonTabs: FC<DestinationTabsProps> = ({ destinationData }) => {
+  const firstTabItemTitle = destinationData[0].name;
 
-  const isTabOne = searchParams.get("tab") === "1";
-  const isTabTwo = searchParams.get("tab") === "2";
+  const findImagePath = (imageSrc: string): string => {
+    const lastPartOfImagePath = imageSrc.substring(
+      imageSrc.lastIndexOf("/") + 1
+    );
+    return `/destination/${lastPartOfImagePath}`;
+  };
+
   return (
-    <TabContainer>
-      <TabHead>
-        <Tab>
-          <Link
-            href={{
-              pathname: "/destination",
-              query: createQueryString("tab", "1"),
-            }}
-          >
-            Tab 1
-          </Link>
-        </Tab>
-        <Tab>
-          <Link
-            href={{
-              pathname: "/destination",
-              query: createQueryString("tab", "2"),
-            }}
-          >
-            Tab 2
-          </Link>
-        </Tab>
-      </TabHead>
-      <TabBody>
-        {isTabOne && <React.Fragment>This is tab one content</React.Fragment>}
-        {isTabTwo && <React.Fragment>This is tab two content</React.Fragment>}
-      </TabBody>
-    </TabContainer>
+    <StyledTabs defaultSelectedTab={firstTabItemTitle}>
+      {destinationData.map((item) => (
+        <StyledTabImage
+          tab={item.name}
+          key={item.name}
+          altText="picture of the planet"
+          imageSrc={findImagePath(item.images.png)}
+        />
+      ))}
+      <StyledTabList aria-label="jser tabs">
+        {destinationData.map((item) => (
+          <StyledTab key={item.name} tab={item.name}>
+            <span className="fontBarlowCondensed">{item.name}</span>
+          </StyledTab>
+        ))}
+      </StyledTabList>
+      {destinationData.map((item) => (
+        <StyledTabPanel key={item.name} tab={item.name}>
+          <StyledTitle className="fontBellefair" textLevel={"p"}>
+            {item.name}
+          </StyledTitle>
+          <StyledDescription textLevel={"p"} className="fontBarlow">
+            {item.description}
+          </StyledDescription>
+          <DescriptionList
+            distance={item.distance}
+            averageTravelTime={item.travel}
+          />
+        </StyledTabPanel>
+      ))}
+    </StyledTabs>
   );
 };
 

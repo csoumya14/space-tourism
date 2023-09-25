@@ -30,7 +30,11 @@ export const NavBar: FC<NavBarProps> = ({ setOpen, open, toggleNav }) => {
       <LinkItems
         items={linkPageList}
         renderItem={(listItem) => (
-          <PageList listItem={listItem} toggleNav={toggleNav} />
+          <PageList
+            key={listItem.id}
+            listItem={listItem}
+            toggleNav={toggleNav}
+          />
         )}
       />
     </StyledMenu>

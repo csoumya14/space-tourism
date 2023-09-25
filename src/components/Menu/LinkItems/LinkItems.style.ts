@@ -6,4 +6,8 @@ export const Container = styled.ol`
   counter-reset: css-counter -1;
   margin-top: 10rem;
   gap: 2rem;
+  @media (min-width: ${(props) => props.theme.mediaSize.s}) {
+    flex-direction: row;
+    margin-top: 0rem;
+  }
 `;

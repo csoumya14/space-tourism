@@ -1,24 +1,17 @@
 import { DestinationType } from "@/types/displayData";
-import DestinationLayout from "../layout";
-import { DestinationTitle } from "@/components/Destination/DestinationTitle/DestinationTitle";
+import DestinationLayout from "./layout";
 import DestinationTabs from "@/components/Destination/DestinationTabs/DestinationTabs";
+import { PageTitle } from "@/components/PageTitle/PageTitle";
+import { PageTitleTypes } from "@/enums/PageTitle";
 
-interface DestinationProps {
-  posts: DestinationType[];
-}
+interface DestinationPageProps {}
 
 const DestinationPage = async (): Promise<JSX.Element> => {
   const data: DestinationType[] = await getData();
-  console.log({ data });
   return (
     <DestinationLayout>
-      <DestinationTitle />
-      <DestinationTabs />
-      <ul>
-        {data.map((destinationItem) => (
-          <li key={destinationItem.name}>{destinationItem.description}</li>
-        ))}
-      </ul>
+      <PageTitle pageNumber={"01"} title={PageTitleTypes.Destination} />
+      <DestinationTabs destinationData={data} />
     </DestinationLayout>
   );
 };

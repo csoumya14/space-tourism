@@ -1,5 +1,5 @@
 "use client";
-import { Section } from "./destination/destinationPage.style";
+import { Section } from "./DestinationPage.style";
 
 interface DestinationLayoutProps {
   children: React.ReactNode;

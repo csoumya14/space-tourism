@@ -2,7 +2,10 @@ interface ImageType {
   png: string;
   webp: string;
 }
-
+interface TechnologyImageType {
+  portrait: string;
+  landscape: string;
+}
 export interface DestinationType {
   name: string;
   images: ImageType;
@@ -11,16 +14,16 @@ export interface DestinationType {
   travel: string;
 }
 
-interface CrewType {
+export interface CrewType {
   name: string;
   images: ImageType;
   role: string;
   bio: string;
 }
 
-interface TechnologyType {
+export interface TechnologyType {
   name: string;
-  images: ImageType;
+  images: TechnologyImageType;
   description: string;
 }
 

@@ -6,4 +6,7 @@ export const OpenCloseButton = styled(Button)`
   border: none;
   right: 1rem;
   z-index: 999;
+  @media (min-width: ${(props) => props.theme.mediaSize.s}) {
+    display: none;
+  }
 `;
