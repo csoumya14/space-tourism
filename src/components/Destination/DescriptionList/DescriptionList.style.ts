@@ -4,10 +4,9 @@ export const StyledDescriptionList = styled.dl`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding-top: 2rem;
-  border-top: 2px solid;
-  border-color: ${(props) => props.theme.palette.primary.grey};
+  gap: 0.5rem;
+  padding-top: 1rem;
+
   @media (min-width: ${(props) => props.theme.mediaSize.s}) {
     flex-direction: row;
     justify-content: center;

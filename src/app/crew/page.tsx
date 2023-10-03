@@ -2,14 +2,15 @@ import { CrewType } from "@/types/displayData";
 import { PageTitle } from "@/components/PageTitle/PageTitle";
 import { PageTitleTypes } from "@/enums/PageTitle";
 import { CrewTabs } from "@/components/Crew/CrewTabs/CrewTabs";
+import CrewLayout from "./layout";
 
 const CrewPage = async (): Promise<JSX.Element> => {
   const data: CrewType[] = await getData();
   return (
-    <>
+    <CrewLayout>
       <PageTitle pageNumber={"02"} title={PageTitleTypes.Crew} />
       <CrewTabs crewData={data} />
-    </>
+    </CrewLayout>
   );
 };
 

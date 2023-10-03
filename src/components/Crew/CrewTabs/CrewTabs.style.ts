@@ -5,33 +5,36 @@ import { Banner } from "@/components/Banner/Banner";
 import styled from "styled-components";
 import { TabPanel } from "@/components/TabBar/TabPanel/TabPanel";
 import { TabImage } from "@/components/TabBar/TabImage/TabImage";
+import { DefaultTabStyle, DefaultTabWrapperStyle } from "@/styles/Shared.style";
 
-export const StyledTabs = styled(Tabs)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+export const StyledTabs = styled(DefaultTabStyle)`
   @media (min-width: ${(props) => props.theme.mediaSize.s}) {
     flex-direction: column-reverse;
     justify-content: space-between;
-    flex: 1;
+  }
+  @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
+    flex-direction: row-reverse;
+    justify-content: center;
   }
 `;
 export const StyledTabImage = styled(TabImage)`
   border-bottom: 1px solid;
   border-color: ${(props) => props.theme.palette.primary.grey};
   width: 100%;
-  flex: 200px 1 1;
+  height: 100%;
+  flex: 1;
   position: relative;
-  @media (min-width: ${(props) => props.theme.mediaSize.s}) {
-    width: 500px;
-    flex: 1 1 100%;
+  @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
+    border-color: transparent;
   }
 `;
 export const StyledTabPanel = styled(TabPanel)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
+    align-items: flex-start;
+  }
 `;
 
 export const StyledTabList = styled(TabList)`
@@ -47,6 +50,9 @@ export const StyledTab = styled(Tab)`
   &[aria-selected="true"] {
     background: ${(props) => props.theme.palette.neutral.white};
   }
+  &:hover {
+    background: ${(props) => props.theme.palette.primary.grey};
+  }
 `;
 
 export const StyledRole = styled(Banner)`
@@ -61,12 +67,15 @@ export const StyledRole = styled(Banner)`
 `;
 
 export const StyledTitle = styled(Banner)`
-  font-size: 24px;
+  font-size: ${(props) => props.theme.fontSizes.heading3.smallScreen};
   text-transform: uppercase;
   text-align: center;
   color: ${(props) => props.theme.palette.neutral.white};
   @media (min-width: ${(props) => props.theme.mediaSize.s}) {
-    font-size: 40px;
+    font-size: ${(props) => props.theme.fontSizes.heading3.bigScreen};
+  }
+  @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
+    text-align: left;
   }
 `;
 
@@ -75,4 +84,18 @@ export const StyledDescription = styled(Banner)`
   padding-bottom: 2rem;
   line-height: 2;
   color: ${(props) => props.theme.palette.primary.lightBlue};
+  @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
+    text-align: start;
+    height: ${(props) => props.theme.height.descriptionHeightLargeScreen}px;
+    width: 90%;
+  }
+`;
+
+export const StyledTabWrapper = styled(DefaultTabWrapperStyle)`
+  @media (min-width: ${(props) => props.theme.mediaSize.s}) {
+    flex-direction: column-reverse;
+  }
+  @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
+    align-items: flex-start;
+  }
 `;

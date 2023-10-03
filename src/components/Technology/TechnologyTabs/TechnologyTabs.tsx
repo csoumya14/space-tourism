@@ -9,8 +9,10 @@ import {
   StyledTabPanel,
   StyledTabImage,
   StyledSubTitle,
+  StyledTabWrapper,
 } from "./TechnologyTabs.style";
 import { TechnologyType } from "@/types/displayData";
+import { useViewPort } from "@/hooks/customViewPort";
 
 interface CrewTabsProps {
   technologyData: TechnologyType[];
@@ -20,6 +22,8 @@ export const TechnologyTabs: FC<CrewTabsProps> = ({ technologyData }) => {
   function getIndex(name: string) {
     return technologyData.findIndex((obj) => obj.name === name) + 1;
   }
+  const [width] = useViewPort();
+  const breakPoint = 990;
   const firstTabItemTitle = technologyData[0].name;
   const findImagePath = (imageSrc: string): string => {
     const lastPartOfImagePath = imageSrc.substring(
@@ -35,29 +39,35 @@ export const TechnologyTabs: FC<CrewTabsProps> = ({ technologyData }) => {
           key={item.name}
           tab={item.name}
           altText="picture of the crew member"
-          imageSrc={findImagePath(item.images.landscape)}
+          imageSrc={
+            width < breakPoint
+              ? findImagePath(item.images.landscape)
+              : findImagePath(item.images.portrait)
+          }
         />
       ))}
-      <StyledTabList aria-label="jser tabs">
+      <StyledTabWrapper>
+        <StyledTabList aria-label="jser tabs">
+          {technologyData.map((item) => (
+            <StyledTab key={item.name} tab={item.name}>
+              <span className="fontBarlowCondensed">{getIndex(item.name)}</span>
+            </StyledTab>
+          ))}
+        </StyledTabList>
         {technologyData.map((item) => (
-          <StyledTab key={item.name} tab={item.name}>
-            <span className="fontBarlowCondensed">{getIndex(item.name)}</span>
-          </StyledTab>
+          <StyledTabPanel key={item.name} tab={item.name}>
+            <StyledSubTitle textLevel={"p"} className="fontBellefair">
+              The terminology ...
+            </StyledSubTitle>
+            <StyledTitle className="fontBellefair" textLevel={"h3"}>
+              {item.name}
+            </StyledTitle>
+            <StyledDescription textLevel={"p"} className="fontBarlow">
+              {item.description}
+            </StyledDescription>
+          </StyledTabPanel>
         ))}
-      </StyledTabList>
-      {technologyData.map((item) => (
-        <StyledTabPanel key={item.name} tab={item.name}>
-          <StyledSubTitle textLevel={"p"} className="fontBellefair">
-            The terminology ...
-          </StyledSubTitle>
-          <StyledTitle className="fontBellefair" textLevel={"p"}>
-            {item.name}
-          </StyledTitle>
-          <StyledDescription textLevel={"p"} className="fontBarlow">
-            {item.description}
-          </StyledDescription>
-        </StyledTabPanel>
-      ))}
+      </StyledTabWrapper>
     </StyledTabs>
   );
 };

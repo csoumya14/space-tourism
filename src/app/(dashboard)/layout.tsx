@@ -1,11 +1,10 @@
 "use client";
-import { Main } from "./layout.style";
-
+import { Section } from "./HomePage.style";
 
 export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <Main>{children}</Main>;
+  return <Section>{children}</Section>;
 }

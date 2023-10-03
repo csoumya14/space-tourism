@@ -1,10 +1,10 @@
 "use client";
 import { Section } from "./TechnologyPage.style";
 
-interface CrewLayoutProps {
+interface TechnologyLayoutProps {
   children: React.ReactNode;
 }
 
-export default function CrewLayout({ children }: CrewLayoutProps) {
+export default function TechnologyLayout({ children }: TechnologyLayoutProps) {
   return <Section>{children}</Section>;
 }

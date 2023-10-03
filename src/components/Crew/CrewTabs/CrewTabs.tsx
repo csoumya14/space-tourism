@@ -9,6 +9,7 @@ import {
   StyledDescription,
   StyledTabPanel,
   StyledTabImage,
+  StyledTabWrapper,
 } from "./CrewTabs.style";
 import { CrewType } from "@/types/displayData";
 
@@ -35,24 +36,26 @@ export const CrewTabs: FC<CrewTabsProps> = ({ crewData }) => {
           imageSrc={findImagePath(item.images.png)}
         />
       ))}
-      <StyledTabList aria-label="jser tabs">
+      <StyledTabWrapper>
+        <StyledTabList aria-label="jser tabs">
+          {crewData.map((item) => (
+            <StyledTab key={item.name} tab={item.name} />
+          ))}
+        </StyledTabList>
         {crewData.map((item) => (
-          <StyledTab key={item.name} tab={item.name} />
+          <StyledTabPanel key={item.name} tab={item.name}>
+            <StyledRole className="fontBellefair" textLevel={"p"}>
+              {item.role}
+            </StyledRole>
+            <StyledTitle className="fontBellefair" textLevel={"h3"}>
+              {item.name}
+            </StyledTitle>
+            <StyledDescription textLevel={"p"} className="fontBarlow">
+              {item.bio}
+            </StyledDescription>
+          </StyledTabPanel>
         ))}
-      </StyledTabList>
-      {crewData.map((item) => (
-        <StyledTabPanel key={item.name} tab={item.name}>
-          <StyledRole className="fontBellefair" textLevel={"p"}>
-            {item.role}
-          </StyledRole>
-          <StyledTitle className="fontBellefair" textLevel={"p"}>
-            {item.name}
-          </StyledTitle>
-          <StyledDescription textLevel={"p"} className="fontBarlow">
-            {item.bio}
-          </StyledDescription>
-        </StyledTabPanel>
-      ))}
+      </StyledTabWrapper>
     </StyledTabs>
   );
 };
