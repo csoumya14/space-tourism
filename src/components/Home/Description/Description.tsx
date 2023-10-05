@@ -5,7 +5,6 @@ import {
   MainHeading,
   SubText,
 } from "./Description.style";
-import { Banner } from "@/components/Banner/Banner";
 
 interface DescriptionProps {}
 

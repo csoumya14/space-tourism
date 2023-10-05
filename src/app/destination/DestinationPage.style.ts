@@ -12,6 +12,5 @@ export const Section = styled(DefaultSectionStyle)`
   @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
     background-image: url(${desktopDestinationCover.src});
     padding: 5rem 4rem;
-    gap: 5rem;
   }
 `;

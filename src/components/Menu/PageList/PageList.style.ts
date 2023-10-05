@@ -25,7 +25,7 @@ export const StyledList = styled.li`
       margin-right: 5px;
       font-weight: bold;
       color: ${(props) => props.theme.palette.neutral.white};
-      padding: 3px 8px;
+      padding: 3px 1px;
       border-radius: 15px;
     }
   }
@@ -42,7 +42,7 @@ export const StyledLink = styled(Link)`
     border-bottom: 2px solid;
     border-color: ${(props) => props.theme.palette.primary.grey};
   }
-  @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
+  @media (min-width: ${(props) => props.theme.mediaSize.s}) {
     padding-bottom: 2rem;
   }
 `;

@@ -1,4 +1,4 @@
-import { FC, useCallback, useContext, useRef } from "react";
+import { FC, useCallback, useRef } from "react";
 import { Wrapper } from "./TabList.style";
 
 interface TabListProps {

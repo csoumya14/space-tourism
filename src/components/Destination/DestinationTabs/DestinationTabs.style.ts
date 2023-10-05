@@ -1,6 +1,5 @@
 import { Tab } from "@/components/TabBar/Tab/Tab";
 import { TabList } from "@/components/TabBar/TabList/TabList";
-import { Tabs } from "@/components/TabBar/Tabs/Tabs";
 import { Banner } from "@/components/Banner/Banner";
 import styled from "styled-components";
 import { TabPanel } from "@/components/TabBar/TabPanel/TabPanel";

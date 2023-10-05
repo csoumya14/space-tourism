@@ -4,8 +4,6 @@ import { PageTitleTypes } from "@/enums/PageTitle";
 import { TechnologyType } from "@/types/displayData";
 import TechnologyLayout from "./layout";
 
-interface TechnologyProps {}
-
 const TechnologyPage = async (): Promise<JSX.Element> => {
   const data: TechnologyType[] = await getData();
   return (

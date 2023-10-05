@@ -26,24 +26,26 @@ export const ExploreButton = styled(Button)`
   height: 150px;
   font-size: 20px;
   letter-spacing: 1.25px;
-  &::before {
-    content: "";
-    width: 450px;
-    height: 450px;
-    background-color:red;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.6s ease-in-out;
-    z-index: -1;
+  -webkit-transition: box-shadow 0.2s ease;
+  -moz-transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  display: inline-block;
+  &:hover {
+    box-shadow: 0 0 0 17px #979797;
+    &:before {
+      -webkit-transform: scale(0.925);
+      -moz-transform: scale(0.925);
+      -ms-transform: scale(0.925);
+      -o-transform: scale(0.925);
+      transform: scale(0.925);
+      box-shadow: 0 0 0 1px #979797;
+      opacity: 0.5;
     }
-    &:hover {
-      &::before {
-        opacity: 0.7;
-      }
+  }
+
   @media (min-width: ${(props) => props.theme.mediaSize.s}) {
     width: 200px;
     height: 200px;

@@ -4,8 +4,6 @@ import DestinationTabs from "@/components/Destination/DestinationTabs/Destinatio
 import { PageTitle } from "@/components/PageTitle/PageTitle";
 import { PageTitleTypes } from "@/enums/PageTitle";
 
-interface DestinationPageProps {}
-
 const DestinationPage = async (): Promise<JSX.Element> => {
   const data: DestinationType[] = await getData();
   return (
