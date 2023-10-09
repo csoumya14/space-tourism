@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
     &::after {
       content: "";
       position: absolute;
-      width: calc(96vw - ${(props) => props.theme.width.navBarWidth}px);
+      width: calc(93vw - ${(props) => props.theme.width.navBarWidth}px);
       z-index: 99;
       height: 1px;
       background-color: white;

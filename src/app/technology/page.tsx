@@ -1,22 +1,23 @@
+"use client";
 import { PageTitle } from "@/components/PageTitle/PageTitle";
 import { TechnologyTabs } from "@/components/Technology/TechnologyTabs/TechnologyTabs";
 import { PageTitleTypes } from "@/enums/PageTitle";
-import { TechnologyType } from "@/types/displayData";
 import TechnologyLayout from "./layout";
+import useSWR from "swr";
 
-const TechnologyPage = async (): Promise<JSX.Element> => {
-  const data: TechnologyType[] = await getData();
+const fetcher = (url: RequestInfo | URL) =>
+  fetch(url).then((res) => res.json());
+
+const TechnologyPage = () => {
+  const { data, error } = useSWR("/api/technology", fetcher);
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
   return (
     <TechnologyLayout>
       <PageTitle pageNumber={"03"} title={PageTitleTypes.Technology} />
-      <TechnologyTabs technologyData={data} />
+      {data.length !== 0 && <TechnologyTabs technologyData={data.technology} />}
     </TechnologyLayout>
   );
 };
 
 export default TechnologyPage;
-
-async function getData() {
-  const res = await fetch(`http://localhost:3001/technology`);
-  return res.json();
-}

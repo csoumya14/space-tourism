@@ -103,7 +103,6 @@ export const StyledTabWrapper = styled(DefaultTabWrapperStyle)`
   }
   @media (min-width: ${(props) => props.theme.mediaSize.lg}) {
     flex-direction: row;
-    align-items: flex-start;
     flex: 1;
   }
 `;

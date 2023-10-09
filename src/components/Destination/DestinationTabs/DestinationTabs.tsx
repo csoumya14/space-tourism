@@ -18,8 +18,8 @@ interface DestinationTabsProps {
 }
 
 const DestinatonTabs: FC<DestinationTabsProps> = ({ destinationData }) => {
+  console.log("tabs", destinationData);
   const firstTabItemTitle = destinationData[0].name;
-
   const findImagePath = (imageSrc: string): string => {
     const lastPartOfImagePath = imageSrc.substring(
       imageSrc.lastIndexOf("/") + 1

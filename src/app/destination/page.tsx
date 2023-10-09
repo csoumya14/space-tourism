@@ -1,22 +1,26 @@
-import { DestinationType } from "@/types/displayData";
+"use client";
 import DestinationLayout from "./layout";
 import DestinationTabs from "@/components/Destination/DestinationTabs/DestinationTabs";
 import { PageTitle } from "@/components/PageTitle/PageTitle";
 import { PageTitleTypes } from "@/enums/PageTitle";
+import useSWR from "swr";
 
-const DestinationPage = async (): Promise<JSX.Element> => {
-  const data: DestinationType[] = await getData();
+const fetcher = (url: RequestInfo | URL) =>
+  fetch(url).then((res) => res.json());
+
+const DestinationPage = () => {
+  const { data, error } = useSWR("/api/destinations", fetcher);
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+
   return (
     <DestinationLayout>
       <PageTitle pageNumber={"01"} title={PageTitleTypes.Destination} />
-      <DestinationTabs destinationData={data} />
+      {data.length !== 0 && (
+        <DestinationTabs destinationData={data.destination} />
+      )}
     </DestinationLayout>
   );
 };
 
 export default DestinationPage;
-
-async function getData() {
-  const res = await fetch(`http://localhost:3001/destinations`);
-  return res.json();
-}
