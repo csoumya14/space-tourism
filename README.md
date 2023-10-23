@@ -84,7 +84,7 @@ I would like to add animation to the project in the future.
 - [Create a hamburger menu with styled components](https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/)
 - [Build an accessible tab component in react](https://jser.dev/react/2022/07/25/build-an-accessible-tab-component-in-react/#a-better-approach---with-accessibility-built-in)
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+
 
 ## Author
 
